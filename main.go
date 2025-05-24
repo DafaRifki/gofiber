@@ -1,7 +1,15 @@
 package main
 
-import "fmt"
+import "github.com/gofiber/fiber/v2"
 
 func main() {
-	fmt.Println("Belajar Pemrograman Golang")
+	app := fiber.New()
+
+	app.Get("/", func(c *fiber.Ctx) error {
+		return c.JSON(fiber.Map{
+			"message": "Belajar Pemrograman Golang - GoFiber",
+		})
+	})
+
+	app.Listen(":8000")
 }
